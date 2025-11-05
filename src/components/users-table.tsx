@@ -276,6 +276,7 @@ export default function UsersTable() {
 
   return (
     <div className="rounded-lg border bg-card w-[95%]">
+      <h3 className="p-4 text-lg font-semibold">Registered Users</h3>
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent border-b">
