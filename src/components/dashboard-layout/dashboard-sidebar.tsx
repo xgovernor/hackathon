@@ -5,59 +5,25 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarInset,
-  SidebarProvider,
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
-  Activity,
-  DollarSign,
   Home,
-  Infinity,
-  LinkIcon,
-  Package2,
-  Percent,
-  PieChart,
+  LogOutIcon,
   Settings,
-  ShoppingBag,
-  Sparkles,
-  Store,
-  TrendingUp,
   Users,
 } from "lucide-react";
 import { Logo } from "@/components/logo";
 import type { Route } from "../nav-main";
 import DashboardNavigation from "@/components/nav-main";
-import { NotificationsPopover } from "@/components/nav-notifications";
 import { TeamSwitcher } from "@/components/team-switcher";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
-const sampleNotifications = [
-  {
-    id: "1",
-    avatar: "/avatars/01.png",
-    fallback: "OM",
-    text: "New order received.",
-    time: "10m ago",
-  },
-  {
-    id: "2",
-    avatar: "/avatars/02.png",
-    fallback: "JL",
-    text: "Server upgrade completed.",
-    time: "1h ago",
-  },
-  {
-    id: "3",
-    avatar: "/avatars/03.png",
-    fallback: "HH",
-    text: "New user signed up.",
-    time: "2h ago",
-  },
-];
+
 
 const dashboardRoutes: Route[] = [
   {
@@ -91,7 +57,7 @@ const teams = [
   { id: "3", name: "Gamma Tech", logo: Logo, plan: "Free" },
 ];
 
-export default function DashboardSidebar() {
+export default function DashboardSidebar({ onLogout }: { onLogout: () => void }) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -124,7 +90,9 @@ export default function DashboardSidebar() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <NotificationsPopover notifications={sampleNotifications} />
+          <Button variant="ghost" size="icon" onClick={onLogout} asChild>
+            <LogOutIcon className="w-4 h-4" />
+          </Button>
           <SidebarTrigger />
         </motion.div>
       </SidebarHeader>

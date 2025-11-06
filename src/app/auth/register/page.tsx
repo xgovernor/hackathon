@@ -1,11 +1,10 @@
+import { signUp } from '@/actions/auth/sign-up';
 import Register from '@/components/register';
 
-const PageLogin = () => {
+const PageRegister = async () => {
     return (
-        <>
-            <Register />
-        </>
-    )
+      <Register />
+  )
 }
 
-export default PageLogin
+export default PageRegister
